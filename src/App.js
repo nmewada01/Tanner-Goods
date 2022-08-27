@@ -5,7 +5,7 @@ import Products from "./components/Products";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import { Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./components/SignUp/Login";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import ProductPage from "./components/ProductPage";

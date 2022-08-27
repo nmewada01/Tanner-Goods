@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, Button } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
+import { addCart } from "../redux/action";
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -119,7 +120,7 @@ const Products = () => {
                       to={`/products/${item.id}`}
                       className="btn btn-outline-dark"
                     >
-                      Add to Card
+                     Buy Now
                     </NavLink>
                   </Card.Body>
                 </Card>

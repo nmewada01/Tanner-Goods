@@ -187,7 +187,7 @@
 
 .Products_container {
   display: grid;
-  gap: 15px;
+  gap: 25px;
   grid-template-columns: repeat(5, 1fr);
   margin: auto;
   margin-top: 100px;
@@ -197,6 +197,12 @@
   width: 100%;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.5s ease;
+  margin-top: 50px;
+}
+.Products_inside_container:hover{
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .gap_in_buttons {
   margin-left: 25px;
@@ -405,6 +411,10 @@
 .card-image {
   width: 100%;
   height: 500px;
+  transition: all 0.5s ease;
+}
+.card-image:hover{
+  transform: scale(1.1);
 }
 .card-des {
   margin: auto;
@@ -556,4 +566,10 @@
     width: 100%;
     height: auto;
   }
+}
+
+.cartShow_Page{
+  display:flex;
+  border:1px solid blue;
+  
 }

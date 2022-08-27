@@ -3,15 +3,16 @@ import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BsSearch } from "react-icons/bs";
-import { AiOutlineLogin } from "react-icons/ai";
-import {useSelector} from "react-redux"
 //import Cart from "./Cart";
 
 import { NavLink } from "react-router-dom";
+import Login from "./SignUp/Login";
+import Register from "./SignUp/Register";
+import CartBtn from "./SignUp/CartBtn";
 //import Products from "./Products";
 
 const Navbar = () => {
-  const data = useSelector((store)=>store.handleCart);
+
 
   return (
     <div>
@@ -53,17 +54,13 @@ const Navbar = () => {
         </div>
         <div className="search_add_to_card">
           <BsSearch />
-          <NavLink className="links" to="/cart">
-            Cart({data.length})
-          </NavLink>
-          <NavLink className={"links"} to="/login">
-            <AiOutlineLogin />
-            Login
-          </NavLink>
+          <CartBtn/>
+          <Register />
+          <Login />
         </div>
       </div>
       <div className="taglin">
-       <p>EXTRA 10% OFF FINAL SALE | USE CODE: LAST CALL</p>
+        <p>EXTRA 10% OFF FINAL SALE | USE CODE: LAST CALL</p>
       </div>
     </div>
   );

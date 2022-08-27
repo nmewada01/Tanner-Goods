@@ -1,32 +1,48 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteCart } from "../redux/action";
+
 const Cart = () => {
-  const cart = useSelector((store) => store.handleCart);
-  console.log("cart:", cart);
-
-  return (
-    <div>
-      {cart?.length > 0 &&
-        cart.map((item) => (
-          <>
+  const cartItem = useSelector((store) => store.cart);
+  console.log(cartItem);
+  const dispatch = useDispatch();
+const handleDelete=(item)=>{
+  dispatch(deleteCart(item))
+}
+  const cartData = (cartData) => {
+    return (
+      <>
+        <div className="cartShow_Page">
+          <div>
+            <img src={cartData.image} alt={cartData.title} />
+          </div>
+          <div>
             <div>
-              <img src={item.image} alt={cart.title} />
+              <h3>{cartData.title}</h3>
+              <h3>{cartData.type}</h3>
+              <h4>{cartData.price}</h4>
             </div>
+          </div>
+          <div>
+            <button onClick={()=>handleDelete(cartData)} >delete</button>
+          </div>
+        </div>
+      </>
+    );
+  };
 
-            <div>
-              <div>
-                <h3>{item.title}</h3>
-                <p>
-                  {item.qty} X ${item.price} = ${item.qty * item.price}{" "}
-                </p>
-                <button>minus</button>
-                <button>plus</button>
-              </div>
-            </div>
-          </>
-        ))}
-    </div>
-  );
+  const emptyCart=()=>{
+    return (
+      <>
+      <div>
+        <h1>No Item is Available in your CART</h1>
+      </div>
+      </>
+    )
+  }
+  return <>
+  {cartItem.length===0 && emptyCart()}
+  {cartItem.length > 0 && cartItem.map(cartData)}</>;
 };
 
 export default Cart;
