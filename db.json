@@ -248,5 +248,13 @@
       "category": "bag",
       "price": 449
     }
+  ],
+  "registeration": [
+    {
+      "username": "nmewada01",
+      "email": "naresh@gmail.com",
+      "password": "1234567",
+      "id": 1
+    }
   ]
 }

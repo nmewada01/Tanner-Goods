@@ -1,6 +1,6 @@
-import belt from './components/belt.jpg';
-import wallet from './components/wallet.jpg'
-import tableware from './components/table.jpg'
+import belt from './img/belt.jpg';
+import wallet from './img/wallet.jpg'
+import tableware from './img/table.jpg'
 
 export const Trend = [
   {

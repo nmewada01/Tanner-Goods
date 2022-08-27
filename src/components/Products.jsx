@@ -3,12 +3,14 @@ import axios from "axios";
 import { Card, Button } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
-import { addCart } from "../redux/action";
+import {GiBeltArmor,GiDiscGolfBag,GiWallet,GiTriangleTarget} from "react-icons/gi"
+
+import Spinners from "./Spinner/Spinner";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
-  const { Load, loading, setLoading } = useContext(AuthContext);
+  const {  loading, setLoading } = useContext(AuthContext);
 
   useEffect(() => {
     axios({
@@ -44,7 +46,7 @@ const Products = () => {
       <div>
         <div className="container_button">
           <div>
-            <Button
+          <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => setFilter(data)}
@@ -63,28 +65,28 @@ const Products = () => {
               variant="outline-dark"
               onClick={() => filterProducts("mazama")}
             >
-              MAZAMA
+              MAZAMA<GiTriangleTarget/>
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("bag")}
             >
-              BAG
+              BAG<GiDiscGolfBag/>
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("belt")}
             >
-              BELT
+              BELT<GiBeltArmor/>
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("wallet")}
             >
-              WALLET
+              WALLET<GiWallet/>
             </Button>
             <Button
               className="gap_in_buttons"
@@ -109,7 +111,7 @@ const Products = () => {
                 <Card>
                   <Card.Img
                     variant="top"
-                    style={{ width: "100%", height: "300px" }}
+                    className="container_img"
                     src={item.image}
                   />
                   <Card.Body>
@@ -136,7 +138,7 @@ const Products = () => {
     <div>
       <h1 style={{ textAlign: "center", marginTop: "50px" }}>New Arrivals</h1>
       <hr />
-      <div>{loading ? <Load /> : <ShowProducts />}</div>
+      <div>{loading ? <Spinners/> : <ShowProducts />}</div>
     </div>
   );
 };

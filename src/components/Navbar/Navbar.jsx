@@ -6,16 +6,16 @@ import { BsSearch } from "react-icons/bs";
 //import Cart from "./Cart";
 
 import { NavLink } from "react-router-dom";
-import Login from "./SignUp/Login";
-import Register from "./SignUp/Register";
-import CartBtn from "./SignUp/CartBtn";
+import Login from "../SignUp/Login";
+import Register from "../SignUp/Register";
+import CartBtn from "../SignUp/CartBtn";
 //import Products from "./Products";
 
 const Navbar = () => {
 
 
   return (
-    <div>
+    <div className="Main_nav">
       <div className="upper_div">
         <div className="show_sociallink">
           <div>
