@@ -4,15 +4,15 @@ import { FaFacebookF } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineLogin } from "react-icons/ai";
+import {useSelector} from "react-redux"
 //import Cart from "./Cart";
 
 import { NavLink } from "react-router-dom";
 //import Products from "./Products";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { count } = useContext(AuthContext);
+  const data = useSelector((store)=>store.handleCart);
+
   return (
     <div>
       <div className="upper_div">
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="search_add_to_card">
           <BsSearch />
           <NavLink className="links" to="/cart">
-            Cart({count})
+            Cart({data.length})
           </NavLink>
           <NavLink className={"links"} to="/login">
             <AiOutlineLogin />
@@ -63,7 +63,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="taglin">
-        <marquee>EXTRA 10% OFF FINAL SALE | USE CODE: LAST CALL</marquee>
+       <p>EXTRA 10% OFF FINAL SALE | USE CODE: LAST CALL</p>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const { Load, loading, setLoading } = useContext(AuthContext);
-  const { count, setCount } = useContext(AuthContext);
+
   useEffect(() => {
     axios({
       url: "http://localhost:8080/Products",
@@ -18,12 +18,13 @@ const Products = () => {
         setLoading(true);
         setData(res.data);
         setFilter(res.data);
-      })
+      }).then(()=> setLoading(false))
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
-  }, []);
-  setLoading(false);
+  }, [setLoading]);
+ 
 
   const filterProducts = (cat) => {
     const updatedList = data.filter((curItem) => curItem.category === cat);
@@ -105,7 +106,11 @@ const Products = () => {
             return (
               <div key={item.id} className="Products_inside_container">
                 <Card>
-                  <Card.Img variant="top" src={item.image} />
+                  <Card.Img
+                    variant="top"
+                    style={{ width: "100%", height: "300px" }}
+                    src={item.image}
+                  />
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
                     <Card.Text>{item.type}</Card.Text>
@@ -113,7 +118,6 @@ const Products = () => {
                     <NavLink
                       to={`/products/${item.id}`}
                       className="btn btn-outline-dark"
-                      onClick={() => setCount(count + 1)}
                     >
                       Add to Card
                     </NavLink>
@@ -137,26 +141,3 @@ const Products = () => {
 };
 
 export default Products;
-
-// <img src={item.image} alt="images" width={"270px"}/>
-//             <h6 style={{ fontWeight: "bold" }}>{item.title}</h6>
-//               <p
-//                 style={{
-//                   fontSize: "15px",
-//                   color: "darkgrey",
-//                   letterSpacing: "3px",
-//                 }}
-//               >
-//                 {item.type}
-//               </p>
-//               <p>{item.price}</p>
-
-// {/* <Card style={{ width: "18rem" }}>
-// <Card.Img variant="top" src={it.image} />
-// <Card.Body>
-//   <Card.Title>{it.title}</Card.Title>
-//   <Card.Text>{it.type}</Card.Text>
-//   <Card.Text>${it.price}</Card.Text>
-//   <Button variant="success">Add to Card</Button>
-// </Card.Body>
-// </Card> */}

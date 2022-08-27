@@ -38,7 +38,6 @@ function reducer(state, action) {
 
 export const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(false);
-  const [count, setCount] = React.useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const Load = () => {
@@ -52,7 +51,7 @@ export const AuthContextProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider
-      value={{ state, dispatch, count, setCount, Load, loading, setLoading }}
+      value={{ state, dispatch, Load, loading, setLoading }}
     >
       {children}
     </AuthContext.Provider>
