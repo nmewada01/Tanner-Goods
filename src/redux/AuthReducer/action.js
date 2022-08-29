@@ -4,7 +4,10 @@ import * as types from "./actionType";
 const register = (payload) => (dispatch) => {
   dispatch({ type: types.REGISTER_REQUEST });
   return axios
-    .post("http://localhost:5050/registeration", payload)
+    .post(
+      "https://login-register-nareshrajput.herokuapp.com/registeration",
+      payload
+    )
     .then((r) => {
       console.log(r);
       dispatch({ type: types.REGISTER_SUCCESS, payload: r.data });
@@ -15,9 +18,8 @@ const register = (payload) => (dispatch) => {
 const login = () => (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   return axios
-    .get("http://localhost:5050/registeration")
+    .get("https://login-register-nareshrajput.herokuapp.com/registeration")
     .then((r) => {
-        console.log(r)
       dispatch({ type: types.LOGIN_SUCCESS, payload: r.data });
     })
     .catch((e) => {

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const AuthReq = ({ children }) => {
   const auth = useSelector((store) => store.AuthReducer.isAuth);
-  console.log(auth)
+  //console.log(auth)
   if (!auth) {
     return <Navigate to="/" replace />;
   }

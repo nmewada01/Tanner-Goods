@@ -5,27 +5,27 @@ import axios from "axios";
 import { AiFillStar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart,deleteCart } from "../redux/action";
+import { addCart, deleteCart } from "../redux/action";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const dispatch = useDispatch();
   const { Load, loading, setLoading } = useContext(AuthContext);
-  const [addToCartBtn,setAddToCartBtn] = useState("Add To Cart")
+  const [addToCartBtn, setAddToCartBtn] = useState("Add To Cart");
 
-const handleAddToCart=(product)=>{
-  if(addToCartBtn==="Add To Cart"){
-    dispatch(addCart(product))
-    setAddToCartBtn("Remove Item")
-  }else{
-    dispatch(deleteCart(product))
-    setAddToCartBtn("Add To Cart")
-  }
-}
+  const handleAddToCart = (product) => {
+    if (addToCartBtn === "Add To Cart") {
+      dispatch(addCart(product));
+      setAddToCartBtn("Remove Item");
+    } else {
+      dispatch(deleteCart(product));
+      setAddToCartBtn("Add To Cart");
+    }
+  };
   useEffect(() => {
     axios({
-      url: `http://localhost:8080/Products/${id}`,
+      url: `https://desktime-tanner-redux.herokuapp.com/Products/${id}`,
       method: "GET",
     })
       .then((res) => {
@@ -68,9 +68,9 @@ const handleAddToCart=(product)=>{
             </p>
             <button
               className="btn btn-outline-dark px-4 py-2"
-              onClick={()=>handleAddToCart(product)}
+              onClick={() => handleAddToCart(product)}
             >
-             {addToCartBtn}
+              {addToCartBtn}
             </button>
             <NavLink to="/cart" className="btn btn-dark ms-2 px-3">
               Go To Cart

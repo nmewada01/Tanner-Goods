@@ -17,17 +17,14 @@ function Login() {
   const token = useSelector((store) => store.AuthReducer.token);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const loginHandler = (e) => {
     e.preventDefault();
     dispatch(login()).then(() => {
       if (token) {
         for (let i = 0; i < token.length; i++) {
-          if (
-            (token[i].name === username || token[i].email === username) &&
-            token[i].password === password
-          ) {
+          if (token[i].email === username && token[i].password === password) {
             alert("login success");
+            console.log(token[i])
             navigate("/products", { replace: true });
             break;
           } else {

@@ -10,8 +10,7 @@ import Cart from "./components/Cart";
 import Footer from "./components/footer/Footer";
 import ProductPage from "./components/ProductPage";
 import Checkout from "./components/Checkout";
-import AuthReq from "./Authenticate/AuthReq";
-//import PrivateRoute from "./context/PrivateRoute";
+//import AuthReq from "./Authenticate/AuthReq";
 
 function App() {
   return (
@@ -21,15 +20,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         {/* <Route exact path="/products" element={<PrivateRoute><Products /></PrivateRoute>} /> */}
-        <Route
-          exact
-          path="/products"
-          element={
-            <AuthReq>
-              <Products />
-            </AuthReq>
-          }
-        />
+        <Route exact path="/products" element={<Products />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/login" element={<Login />} />

@@ -7,7 +7,7 @@ import TriggerRendererProp from "./popovers/Trigger";
 import { Button } from "react-bootstrap";
 const Cart = () => {
   const cartItem = useSelector((store) => store.cart);
-  console.log(cartItem);
+  //console.log(cartItem);
   const dispatch = useDispatch();
   const handleDelete = (item) => {
     dispatch(deleteCart(item));

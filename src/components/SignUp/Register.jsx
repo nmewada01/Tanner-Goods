@@ -3,7 +3,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { FaFacebookF } from "react-icons/fa";
 import { GrGoogle, GrUserAdd } from "react-icons/gr";
 import { register } from "../../redux/AuthReducer/action";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   username: "",

@@ -3,31 +3,36 @@ import axios from "axios";
 import { Card, Button } from "react-bootstrap";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
-import {GiBeltArmor,GiDiscGolfBag,GiWallet,GiTriangleTarget} from "react-icons/gi"
+import {
+  GiBeltArmor,
+  GiDiscGolfBag,
+  GiWallet,
+  GiTriangleTarget,
+} from "react-icons/gi";
 
 import Spinners from "./Spinner/Spinner";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
-  const {  loading, setLoading } = useContext(AuthContext);
+  const { loading, setLoading } = useContext(AuthContext);
 
   useEffect(() => {
     axios({
-      url: "http://localhost:8080/Products",
+      url: "https://desktime-tanner-redux.herokuapp.com/Products",
       method: "GET",
     })
       .then((res) => {
         setLoading(true);
         setData(res.data);
         setFilter(res.data);
-      }).then(()=> setLoading(false))
+      })
+      .then(() => setLoading(false))
       .catch((err) => {
         console.log(err);
         setLoading(false);
       });
   }, [setLoading]);
- 
 
   const filterProducts = (cat) => {
     const updatedList = data.filter((curItem) => curItem.category === cat);
@@ -46,7 +51,7 @@ const Products = () => {
       <div>
         <div className="container_button">
           <div>
-          <Button
+            <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => setFilter(data)}
@@ -65,28 +70,32 @@ const Products = () => {
               variant="outline-dark"
               onClick={() => filterProducts("mazama")}
             >
-              MAZAMA<GiTriangleTarget/>
+              MAZAMA
+              <GiTriangleTarget />
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("bag")}
             >
-              BAG<GiDiscGolfBag/>
+              BAG
+              <GiDiscGolfBag />
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("belt")}
             >
-              BELT<GiBeltArmor/>
+              BELT
+              <GiBeltArmor />
             </Button>
             <Button
               className="gap_in_buttons"
               variant="outline-dark"
               onClick={() => filterProducts("wallet")}
             >
-              WALLET<GiWallet/>
+              WALLET
+              <GiWallet />
             </Button>
             <Button
               className="gap_in_buttons"
@@ -122,7 +131,7 @@ const Products = () => {
                       to={`/products/${item.id}`}
                       className="btn btn-outline-dark"
                     >
-                     Buy Now
+                      Buy Now
                     </NavLink>
                   </Card.Body>
                 </Card>
@@ -138,7 +147,7 @@ const Products = () => {
     <div>
       <h1 style={{ textAlign: "center", marginTop: "50px" }}>New Arrivals</h1>
       <hr />
-      <div>{loading ? <Spinners/> : <ShowProducts />}</div>
+      <div>{loading ? <Spinners /> : <ShowProducts />}</div>
     </div>
   );
 };
